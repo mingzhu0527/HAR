@@ -2,7 +2,7 @@
 
 Code for WWW2019 paper "A Hierarchical Attention Retrieval Model for Healthcare Question Answering" (http://dmkd.cs.vt.edu/papers/WWW19.pdf)
 
-** The data preprocessing and training code are from MatchZoo branch 1.0. Please refer to the original repo for more details: https://github.com/NTMC-Community/MatchZoo **
+**The data preprocessing and training code are from MatchZoo branch 1.0. Please refer to the original repo for more details: https://github.com/NTMC-Community/MatchZoo**
 
 ## HealthQA Dataset
 
