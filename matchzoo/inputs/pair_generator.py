@@ -161,20 +161,20 @@ class PairGenerator(PairBasicGenerator):
                     print(X1, X2, Y)
                 yield X1, X1_len, X2, X2_len, Y
                 
-    def get_batch_generator(self):
-        while True:
-            X1, X1_len, X2, X2_len, Y = self.get_batch()
-            if self.config['use_dpool']:
-                yield ({'query': X1, 'query_len': X1_len, 'doc': X2, 'doc_len': X2_len, 'dpool_index': DynamicMaxPooling.dynamic_pooling_index(X1_len, X2_len, self.config['text1_maxlen'], self.config['text2_maxlen'])}, [Y, Y])
-            else:
-                yield ({'query': X1, 'query_len': X1_len, 'doc': X2, 'doc_len': X2_len}, [Y, Y])
 #     def get_batch_generator(self):
 #         while True:
 #             X1, X1_len, X2, X2_len, Y = self.get_batch()
 #             if self.config['use_dpool']:
-#                 yield ({'query': X1, 'query_len': X1_len, 'doc': X2, 'doc_len': X2_len, 'dpool_index': DynamicMaxPooling.dynamic_pooling_index(X1_len, X2_len, self.config['text1_maxlen'], self.config['text2_maxlen'])}, Y)
+#                 yield ({'query': X1, 'query_len': X1_len, 'doc': X2, 'doc_len': X2_len, 'dpool_index': DynamicMaxPooling.dynamic_pooling_index(X1_len, X2_len, self.config['text1_maxlen'], self.config['text2_maxlen'])}, [Y, Y])
 #             else:
-#                 yield ({'query': X1, 'query_len': X1_len, 'doc': X2, 'doc_len': X2_len}, Y)
+#                 yield ({'query': X1, 'query_len': X1_len, 'doc': X2, 'doc_len': X2_len}, [Y, Y])
+    def get_batch_generator(self):
+        while True:
+            X1, X1_len, X2, X2_len, Y = self.get_batch()
+            if self.config['use_dpool']:
+                yield ({'query': X1, 'query_len': X1_len, 'doc': X2, 'doc_len': X2_len, 'dpool_index': DynamicMaxPooling.dynamic_pooling_index(X1_len, X2_len, self.config['text1_maxlen'], self.config['text2_maxlen'])}, Y)
+            else:
+                yield ({'query': X1, 'query_len': X1_len, 'doc': X2, 'doc_len': X2_len}, Y)
 
 class Triletter_PairGenerator(PairBasicGenerator):
     def __init__(self, config):
